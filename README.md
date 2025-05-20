@@ -1,3 +1,7 @@
+Nome:
+Enrico Andrade D'Amico 557706
+Carolina Estevam Rodgerio 554975
+Lucas Thales dos Santos 558886
 
 # API de Gerenciamento de Motos - Mottu
 
