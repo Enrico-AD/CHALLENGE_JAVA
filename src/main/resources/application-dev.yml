@@ -1,0 +1,93 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /mottu/
+  session:
+    cookie:
+      same-site: "none"
+spring:
+  main:
+    allow-circular-references: true
+  output:
+    ansi:
+      enabled: DETECT
+  datasource:
+    url: jdbc:mysql://localhost:3306/mottu
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+    initialization-order: 1
+    tomcat:
+      test-on-borrow: true
+      validation-query: SELECT 1
+  flyway:
+    enabled: false
+    fail-on-missing-locations: false
+    locations: classpath:/db/migration
+
+
+
+  jpa:
+    show-sql: true
+    generate-ddl: true # Alterado para true
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update # Alterado para update
+    properties:
+      hibernate:
+        format_sql: true
+ # datasource:
+    # url: jdbc:h2:mem:mottu
+    # username: admin
+    # password: admin
+    # driver-class-name: org.h2.Driver
+    # initialization-order: 1
+    # tomcat:
+    #   test-on-borrow: true
+    #   validation-query: SELECT 1
+  #flyway:
+    # enabled: true
+    # fail-on-missing-locations: false
+    # locations: classpath:db/migration
+    # baseline-on-migrate: true
+ # jpa:
+    # show-sql: true
+    # generate-ddl: true
+    # database-platform: org.hibernate.dialect.H2Dialect
+    # hibernate:
+    #   ddl-auto: update
+    # properties:
+    #   hibernate:
+    #     format_sql: true
+  h2:
+    # console:
+    #   enabled: true
+    #   path: /h2-console
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    display-request-duration: true
+    operations-sorter: mottu
+  packages-to-scan: br.com.mottu.controller
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+logging:
+  file:
+    name: logs/mottu.log
+  pattern:
+    console: "[%d] [%-5level] [%-40.40logger{39}] : %msg%n"
+    file: "[%d] [%-5level] [%-40.40logger{39}] : %msg%n"
+  level:
+    root: warn
+    br.com.mottu: info
+    org.springframework: error
+    org.springframework.boot.SpringApplication: info
+    org.hibernate: error
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace
+    org.apache.tomcat: error
+    org.springframework.security: debug
