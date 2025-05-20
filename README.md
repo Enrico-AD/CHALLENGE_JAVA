@@ -1,4 +1,4 @@
-```markdown
+
 # API de Gerenciamento de Motos - Mottu
 
 ## Visão Geral
